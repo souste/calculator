@@ -1,1 +1,54 @@
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
 
+.container {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  align-items: center;
+}
+
+.display {
+  border: 1px solid black;
+  margin: 10px 5px;
+  height: 30px;
+  width: 170px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.buttons-container {
+  flex: 0;
+}
+
+.top-buttons {
+  display: flex;
+  justify-content: end;
+  margin: 5px;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.clear-button,
+.delete-button {
+  width: 50px;
+}
+
+button {
+  height: 40px;
+  width: 40px;
+  margin: 2px;
+}
