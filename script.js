@@ -1,5 +1,6 @@
 const numButtons = document.querySelectorAll(".num-button");
 const display = document.querySelector(".display");
+const clearButton = document.querySelector(".clear-button");
 
 /* Calculator Functions */
 
@@ -23,6 +24,7 @@ let firstNumber = "";
 let secondNumber = "";
 let operator = "";
 let displayValue = "";
+display.innerText = 0;
 
 function operate(op, num1, num2) {
   if (op === "+") return add(num1, num2);
@@ -40,4 +42,9 @@ numButtons.forEach((button) => {
     display.innerText = displayValue;
     console.log(displayValue);
   });
+});
+
+clearButton.addEventListener("click", () => {
+  displayValue = "";
+  display.innerText = 0;
 });
