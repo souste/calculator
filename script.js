@@ -43,8 +43,8 @@ operatorButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     runningValue = operate(
       operator,
-      parseInt(firstNumber),
-      parseInt(secondNumber)
+      parseFloat(firstNumber),
+      parseFloat(secondNumber)
     );
     if (operator === "") {
       operator = event.target.value;
@@ -62,8 +62,8 @@ operatorButtons.forEach((button) => {
 equalsButton.addEventListener("click", () => {
   resultValue = operate(
     operator,
-    parseInt(firstNumber),
-    parseInt(secondNumber)
+    parseFloat(firstNumber),
+    parseFloat(secondNumber)
   );
   display.innerText = resultValue;
   firstNumber = resultValue;
