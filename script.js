@@ -1,8 +1,8 @@
 const numButtons = document.querySelectorAll(".num-button");
+const operatorButtons = document.querySelectorAll(".op-button");
 const display = document.querySelector(".display");
 const clearButton = document.querySelector(".clear-button");
-
-/* Calculator Functions */
+const equalsButton = document.querySelector(".equals-button");
 
 function add(a, b) {
   return a + b;
@@ -25,6 +25,7 @@ let secondNumber = "";
 let operator = "";
 let displayValue = "";
 display.innerText = 0;
+let resultValue = "";
 
 function operate(op, num1, num2) {
   if (op === "+") return add(num1, num2);
@@ -33,18 +34,41 @@ function operate(op, num1, num2) {
   if (op === "/") return divide(num1, num2);
 }
 
-// Instructions are to create functions that populate the display when I click the number buttons - should I put this into named function??
-
 numButtons.forEach((button) => {
+  button.addEventListener("click", displayVal);
+});
+
+operatorButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
-    let clickedNumber = event.target.value;
-    displayValue += clickedNumber;
-    display.innerText = displayValue;
-    console.log(displayValue);
+    operator = event.target.value;
+    clickedNumber = "";
   });
 });
+
+equalsButton.addEventListener("click", () => {
+  resultValue = operate(
+    operator,
+    parseInt(firstNumber),
+    parseInt(secondNumber)
+  );
+  display.innerText = resultValue;
+});
+
+function displayVal(event) {
+  clickedNumber = event.target.value;
+  if (operator === "" && secondNumber === "") {
+    firstNumber += clickedNumber;
+    display.innerText = firstNumber;
+  } else if (operator !== "") {
+    secondNumber += clickedNumber;
+    display.innerText = secondNumber;
+  }
+}
 
 clearButton.addEventListener("click", () => {
   displayValue = "";
   display.innerText = 0;
+  firstNumber = "";
+  secondNumber = "";
+  operator = "";
 });
