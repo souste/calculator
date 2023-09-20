@@ -60,14 +60,15 @@ operatorButtons.forEach((button) => {
 
 equalsButton.addEventListener("click", () => {
   if (firstNumber !== "" && secondNumber === "") {
-    firstNumber === resultValue;
-    operator === "";
+    display.innerText = firstNumber;
+    resultValue = firstNumber;
+    operator = "";
   } else {
     resultValue = operate(
       operator,
       parseFloat(firstNumber),
       parseFloat(secondNumber)
-    ).toFixed(2);
+    );
     display.innerText = resultValue;
     firstNumber = resultValue;
     secondNumber = "";
