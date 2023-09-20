@@ -65,6 +65,9 @@ equalsButton.addEventListener("click", () => {
     parseInt(secondNumber)
   );
   display.innerText = resultValue;
+  firstNumber = resultValue;
+  secondNumber = "";
+  operator = "";
 });
 
 function displayVal(event) {
