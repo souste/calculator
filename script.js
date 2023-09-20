@@ -59,15 +59,20 @@ operatorButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener("click", () => {
-  resultValue = operate(
-    operator,
-    parseFloat(firstNumber),
-    parseFloat(secondNumber)
-  ).toFixed(2);
-  display.innerText = resultValue;
-  firstNumber = resultValue;
-  secondNumber = "";
-  operator = "";
+  if (firstNumber !== "" && secondNumber === "") {
+    firstNumber === resultValue;
+    operator === "";
+  } else {
+    resultValue = operate(
+      operator,
+      parseFloat(firstNumber),
+      parseFloat(secondNumber)
+    ).toFixed(2);
+    display.innerText = resultValue;
+    firstNumber = resultValue;
+    secondNumber = "";
+    operator = "";
+  }
 });
 
 function displayVal(event) {
