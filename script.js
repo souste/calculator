@@ -25,7 +25,7 @@ let secondNumber = "";
 let operator = "";
 let displayValue = "";
 display.innerText = 0;
-// let runningValue = "";
+let runningValue = "";
 let resultValue = "";
 
 function operate(op, num1, num2) {
@@ -41,16 +41,17 @@ numButtons.forEach((button) => {
 
 operatorButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
+    runningValue = operate(
+      operator,
+      parseInt(firstNumber),
+      parseInt(secondNumber)
+    );
     if (operator === "") {
       operator = event.target.value;
       clickedNumber = "";
     } else {
       operator = event.target.value;
-      runningValue = operate(
-        operator,
-        parseInt(firstNumber),
-        parseInt(secondNumber)
-      );
+
       firstNumber = runningValue;
       display.innerText = firstNumber;
       secondNumber = "";
