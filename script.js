@@ -51,7 +51,6 @@ operatorButtons.forEach((button) => {
       clickedNumber = "";
     } else {
       operator = event.target.value;
-
       firstNumber = runningValue;
       display.innerText = firstNumber;
       secondNumber = "";
@@ -64,7 +63,7 @@ equalsButton.addEventListener("click", () => {
     operator,
     parseFloat(firstNumber),
     parseFloat(secondNumber)
-  );
+  ).toFixed(2);
   display.innerText = resultValue;
   firstNumber = resultValue;
   secondNumber = "";
