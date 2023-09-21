@@ -22,10 +22,10 @@ function divide(a, b) {
 
 let firstNumber = "";
 let secondNumber = "";
+let chainedNumbersValue = "";
 let operator = "";
 let displayValue = "";
 display.innerText = 0;
-let runningValue = "";
 let resultValue = "";
 
 function operate(op, num1, num2) {
@@ -36,29 +36,44 @@ function operate(op, num1, num2) {
 }
 
 numButtons.forEach((button) => {
-  button.addEventListener("click", displayVal);
+  button.addEventListener("click", numberDisplay);
 });
+
+function numberDisplay(event) {
+  clickedNumber = event.target.value;
+  if (operator === "" && secondNumber === "") {
+    firstNumber += clickedNumber;
+    display.innerText = firstNumber;
+  } else if (operator !== "") {
+    secondNumber += clickedNumber;
+    display.innerText = secondNumber;
+  }
+}
 
 operatorButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    runningValue = operate(
-      operator,
-      parseFloat(firstNumber),
-      parseFloat(secondNumber)
-    );
-    if (operator === "") {
-      operator = event.target.value;
-      clickedNumber = "";
-    } else {
-      operator = event.target.value;
-      firstNumber = runningValue;
-      display.innerText = firstNumber;
-      secondNumber = "";
-    }
-  });
+  button.addEventListener("click", operatorCalculation);
 });
 
-equalsButton.addEventListener("click", () => {
+function operatorCalculation(event) {
+  chainedNumbersValue = operate(
+    operator,
+    parseFloat(firstNumber),
+    parseFloat(secondNumber)
+  );
+  if (operator === "") {
+    operator = event.target.value;
+    clickedNumber = "";
+  } else {
+    operator = event.target.value;
+    firstNumber = chainedNumbersValue;
+    display.innerText = firstNumber;
+    secondNumber = "";
+  }
+}
+
+equalsButton.addEventListener("click", equalsCalculation);
+
+function equalsCalculation() {
   if (firstNumber !== "" && secondNumber === "") {
     display.innerText = firstNumber;
     resultValue = firstNumber;
@@ -73,17 +88,6 @@ equalsButton.addEventListener("click", () => {
     firstNumber = resultValue;
     secondNumber = "";
     operator = "";
-  }
-});
-
-function displayVal(event) {
-  clickedNumber = event.target.value;
-  if (operator === "" && secondNumber === "") {
-    firstNumber += clickedNumber;
-    display.innerText = firstNumber;
-  } else if (operator !== "") {
-    secondNumber += clickedNumber;
-    display.innerText = secondNumber;
   }
 }
 
