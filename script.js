@@ -3,12 +3,13 @@ const operatorButtons = document.querySelectorAll(".op-button");
 const display = document.querySelector(".display");
 const clearButton = document.querySelector(".clear-button");
 const equalsButton = document.querySelector(".equals-button");
+const deleteButton = document.querySelector(".delete-button");
 
 let firstNumber = "";
 let secondNumber = "";
 let chainedNumbersValue = "";
+let clickedNumber = "";
 let operator = "";
-let displayValue = "";
 display.innerText = 0;
 let resultValue = "";
 
@@ -71,7 +72,7 @@ function operatorCalculation(event) {
   } else {
     if (chainedNumbersValue !== "ERROR!!") {
       operator = event.target.value;
-      firstNumber = +chainedNumbersValue.toFixed(2);
+      firstNumber = +chainedNumbersValue.toFixed(5);
       display.innerText = firstNumber;
       secondNumber = "";
     } else {
@@ -95,8 +96,8 @@ function equalsCalculation() {
       parseFloat(secondNumber)
     );
     if (resultValue !== "ERROR!!") {
-      display.innerText = +resultValue.toFixed(2);
-      firstNumber = +resultValue.toFixed(2);
+      display.innerText = +resultValue.toFixed(5);
+      firstNumber = +resultValue.toFixed(5);
       secondNumber = "";
       operator = "";
     } else {
@@ -106,10 +107,21 @@ function equalsCalculation() {
 }
 
 clearButton.addEventListener("click", () => {
-  displayValue = "";
   display.innerText = 0;
   firstNumber = "";
   secondNumber = "";
   operator = "";
   document.getElementById("decimal-button").disabled = false;
+});
+
+deleteButton.addEventListener("click", () => {
+  if (operator === "" && secondNumber === "") {
+    let newNumber = firstNumber.slice(0, -1);
+    firstNumber = newNumber;
+    display.innerText = firstNumber;
+  } else if (operator !== "") {
+    let newNumber = secondNumber.slice(0, -1);
+    secondNumber = newNumber;
+    display.innerText = secondNumber;
+  }
 });
