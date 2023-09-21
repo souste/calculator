@@ -101,4 +101,5 @@ clearButton.addEventListener("click", () => {
   firstNumber = "";
   secondNumber = "";
   operator = "";
+  document.getElementById("decimal-button").disabled = false;
 });
