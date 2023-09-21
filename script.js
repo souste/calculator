@@ -40,6 +40,8 @@ numButtons.forEach((button) => {
 });
 
 function numberDisplay(event) {
+  if (event.target.value === ".")
+    document.getElementById("decimal-button").disabled = true;
   clickedNumber = event.target.value;
   if (operator === "" && secondNumber === "") {
     firstNumber += clickedNumber;
@@ -55,6 +57,7 @@ operatorButtons.forEach((button) => {
 });
 
 function operatorCalculation(event) {
+  document.getElementById("decimal-button").disabled = false;
   chainedNumbersValue = operate(
     operator,
     parseFloat(firstNumber),
@@ -74,6 +77,7 @@ function operatorCalculation(event) {
 equalsButton.addEventListener("click", equalsCalculation);
 
 function equalsCalculation() {
+  document.getElementById("decimal-button").disabled = false;
   if (firstNumber !== "" && secondNumber === "") {
     display.innerText = firstNumber;
     resultValue = firstNumber;
