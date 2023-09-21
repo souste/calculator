@@ -29,6 +29,7 @@ function divide(a, b) {
 }
 
 function operate(op, num1, num2) {
+  if (op === "/" && num2 === 0) return "ERROR!!";
   if (op === "+") return add(num1, num2);
   if (op === "-") return subtract(num1, num2);
   if (op === "*") return multiply(num1, num2);
@@ -58,6 +59,7 @@ operatorButtons.forEach((button) => {
 
 function operatorCalculation(event) {
   document.getElementById("decimal-button").disabled = false;
+
   chainedNumbersValue = operate(
     operator,
     parseFloat(firstNumber),
@@ -88,10 +90,15 @@ function equalsCalculation() {
       parseFloat(firstNumber),
       parseFloat(secondNumber)
     );
-    display.innerText = +resultValue.toFixed(2);
-    firstNumber = +resultValue.toFixed(2);
-    secondNumber = "";
-    operator = "";
+    console.log(resultValue);
+    if (display.innerText === Number) {
+      display.innerText = +resultValue.toFixed(2);
+      firstNumber = +resultValue.toFixed(2);
+      secondNumber = "";
+      operator = "";
+    } else {
+      display.innerText = resultValue;
+    }
   }
 }
 
