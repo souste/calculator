@@ -13,6 +13,8 @@ let operator = "";
 display.innerText = 0;
 let resultValue = "";
 
+// Calculator Functions
+
 function add(a, b) {
   return a + b;
 }
@@ -37,9 +39,23 @@ function operate(op, num1, num2) {
   if (op === "/") return divide(num1, num2);
 }
 
+// Event Listeners
+
 numButtons.forEach((button) => {
   button.addEventListener("click", numberDisplay);
 });
+
+operatorButtons.forEach((button) => {
+  button.addEventListener("click", operatorCalculation);
+});
+
+equalsButton.addEventListener("click", equalsCalculation);
+
+clearButton.addEventListener("click", clearDisplay);
+
+deleteButton.addEventListener("click", deleteNumber);
+
+// Event Listener Functions
 
 function numberDisplay(event) {
   if (event.target.value === ".")
@@ -54,13 +70,8 @@ function numberDisplay(event) {
   }
 }
 
-operatorButtons.forEach((button) => {
-  button.addEventListener("click", operatorCalculation);
-});
-
 function operatorCalculation(event) {
   document.getElementById("decimal-button").disabled = false;
-
   chainedNumbersValue = operate(
     operator,
     parseFloat(firstNumber),
@@ -80,8 +91,6 @@ function operatorCalculation(event) {
     }
   }
 }
-
-equalsButton.addEventListener("click", equalsCalculation);
 
 function equalsCalculation() {
   document.getElementById("decimal-button").disabled = false;
@@ -106,15 +115,15 @@ function equalsCalculation() {
   }
 }
 
-clearButton.addEventListener("click", () => {
+function clearDisplay() {
   display.innerText = 0;
   firstNumber = "";
   secondNumber = "";
   operator = "";
   document.getElementById("decimal-button").disabled = false;
-});
+}
 
-deleteButton.addEventListener("click", () => {
+function deleteNumber() {
   if (operator === "" && secondNumber === "") {
     let newNumber = firstNumber.slice(0, -1);
     firstNumber = newNumber;
@@ -124,4 +133,4 @@ deleteButton.addEventListener("click", () => {
     secondNumber = newNumber;
     display.innerText = secondNumber;
   }
-});
+}
