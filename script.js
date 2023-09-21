@@ -4,6 +4,14 @@ const display = document.querySelector(".display");
 const clearButton = document.querySelector(".clear-button");
 const equalsButton = document.querySelector(".equals-button");
 
+let firstNumber = "";
+let secondNumber = "";
+let chainedNumbersValue = "";
+let operator = "";
+let displayValue = "";
+display.innerText = 0;
+let resultValue = "";
+
 function add(a, b) {
   return a + b;
 }
@@ -19,14 +27,6 @@ function multiply(a, b) {
 function divide(a, b) {
   return a / b;
 }
-
-let firstNumber = "";
-let secondNumber = "";
-let chainedNumbersValue = "";
-let operator = "";
-let displayValue = "";
-display.innerText = 0;
-let resultValue = "";
 
 function operate(op, num1, num2) {
   if (op === "+") return add(num1, num2);
@@ -68,7 +68,7 @@ function operatorCalculation(event) {
     clickedNumber = "";
   } else {
     operator = event.target.value;
-    firstNumber = chainedNumbersValue;
+    firstNumber = +chainedNumbersValue.toFixed(2);
     display.innerText = firstNumber;
     secondNumber = "";
   }
@@ -88,8 +88,8 @@ function equalsCalculation() {
       parseFloat(firstNumber),
       parseFloat(secondNumber)
     );
-    display.innerText = resultValue;
-    firstNumber = resultValue;
+    display.innerText = +resultValue.toFixed(2);
+    firstNumber = +resultValue.toFixed(2);
     secondNumber = "";
     operator = "";
   }
