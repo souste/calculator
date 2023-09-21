@@ -69,10 +69,14 @@ function operatorCalculation(event) {
     operator = event.target.value;
     clickedNumber = "";
   } else {
-    operator = event.target.value;
-    firstNumber = +chainedNumbersValue.toFixed(2);
-    display.innerText = firstNumber;
-    secondNumber = "";
+    if (chainedNumbersValue !== "ERROR!!") {
+      operator = event.target.value;
+      firstNumber = +chainedNumbersValue.toFixed(2);
+      display.innerText = firstNumber;
+      secondNumber = "";
+    } else {
+      display.innerText = chainedNumbersValue;
+    }
   }
 }
 
@@ -90,8 +94,7 @@ function equalsCalculation() {
       parseFloat(firstNumber),
       parseFloat(secondNumber)
     );
-    console.log(resultValue);
-    if (display.innerText === Number) {
+    if (resultValue !== "ERROR!!") {
       display.innerText = +resultValue.toFixed(2);
       firstNumber = +resultValue.toFixed(2);
       secondNumber = "";
