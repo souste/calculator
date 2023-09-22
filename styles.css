@@ -27,7 +27,7 @@
   justify-content: end;
   align-items: center;
   font-size: 35px;
-  background-color: rgb(69, 105, 102);
+  background-color: rgb(69, 105, 97);
   font-family: "Digital-7 Mono", monospace;
   border-radius: 5px;
 }
@@ -63,6 +63,7 @@
 #minus-button {
   background-color: darkgray;
   border-radius: 5px;
+  color: white;
 }
 
 .num-button {
@@ -75,6 +76,7 @@
 .equals-button {
   background-color: rgb(173, 157, 157);
   border-radius: 5px;
+  color: white;
 }
 
 button {
