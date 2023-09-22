@@ -4,6 +4,7 @@ const display = document.querySelector(".display");
 const clearButton = document.querySelector(".clear-button");
 const equalsButton = document.querySelector(".equals-button");
 const deleteButton = document.querySelector(".delete-button");
+const minusButton = document.getElementById("minus-button");
 
 let firstNumber = "";
 let secondNumber = "";
@@ -12,6 +13,8 @@ let clickedNumber = "";
 let operator = "";
 display.innerText = 0;
 let resultValue = "";
+
+document.getElementById("minus-button").disabled = true;
 
 // Calculator Functions
 
@@ -55,7 +58,18 @@ clearButton.addEventListener("click", clearDisplay);
 
 deleteButton.addEventListener("click", deleteNumber);
 
-// Event Listener Functions
+minusButton.addEventListener("click", () => {
+  console.log("clickedNumber", clickedNumber);
+  if (operator === "" && secondNumber === "") {
+    firstNumber = -firstNumber;
+    display.innerText = -display.innerText;
+  } else if (operator !== "") {
+    secondNumber = -secondNumber;
+    display.innerText = -display.innerText;
+  }
+});
+
+// Click Event Listener Functions
 
 function numberDisplay(event) {
   if (event.target.value === ".")
@@ -64,14 +78,17 @@ function numberDisplay(event) {
   if (operator === "" && secondNumber === "") {
     firstNumber += clickedNumber;
     display.innerText = firstNumber;
+    document.getElementById("minus-button").disabled = false;
   } else if (operator !== "") {
     secondNumber += clickedNumber;
     display.innerText = secondNumber;
+    document.getElementById("minus-button").disabled = false;
   }
 }
 
 function operatorCalculation(event) {
   document.getElementById("decimal-button").disabled = false;
+  document.getElementById("minus-button").disabled = false;
   chainedNumbersValue = operate(
     operator,
     parseFloat(firstNumber),
@@ -80,12 +97,14 @@ function operatorCalculation(event) {
   if (operator === "") {
     operator = event.target.value;
     clickedNumber = "";
+    document.getElementById("minus-button").disabled = true;
   } else {
     if (chainedNumbersValue !== "ERROR!!") {
       operator = event.target.value;
-      firstNumber = +chainedNumbersValue.toFixed(5);
+      firstNumber = +chainedNumbersValue.toFixed(2);
       display.innerText = firstNumber;
       secondNumber = "";
+      document.getElementById("minus-button").disabled = true;
     } else {
       display.innerText = chainedNumbersValue;
     }
@@ -94,6 +113,7 @@ function operatorCalculation(event) {
 
 function equalsCalculation() {
   document.getElementById("decimal-button").disabled = false;
+  document.getElementById("minus-button").disabled = false;
   if (firstNumber !== "" && secondNumber === "") {
     display.innerText = firstNumber;
     resultValue = firstNumber;
@@ -105,10 +125,11 @@ function equalsCalculation() {
       parseFloat(secondNumber)
     );
     if (resultValue !== "ERROR!!") {
-      display.innerText = +resultValue.toFixed(5);
-      firstNumber = +resultValue.toFixed(5);
+      display.innerText = +resultValue.toFixed(2);
+      firstNumber = +resultValue.toFixed(2);
       secondNumber = "";
       operator = "";
+      document.getElementById("minus-button").disabled = true;
     } else {
       display.innerText = resultValue;
     }
@@ -121,6 +142,7 @@ function clearDisplay() {
   secondNumber = "";
   operator = "";
   document.getElementById("decimal-button").disabled = false;
+  document.getElementById("minus-button").disabled = true;
 }
 
 function deleteNumber() {
