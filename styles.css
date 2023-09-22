@@ -9,21 +9,27 @@
   border: 2px solid black;
   display: flex;
   flex-direction: column;
-  width: 200px;
-  height: 300px;
+  width: 250px;
+  height: 380px;
   padding-top: 5px;
   padding-bottom: 5px;
   align-items: center;
+  background-color: rgb(95, 95, 116);
+  border-radius: 10px;
 }
 
 .display {
   border: 1px solid black;
   margin: 10px 5px;
-  height: 30px;
-  width: 170px;
+  height: 62.5px;
+  width: 210.5px;
   display: flex;
   justify-content: end;
   align-items: center;
+  font-size: 35px;
+  background-color: rgb(69, 105, 102);
+  font-family: "Digital-7 Mono", monospace;
+  border-radius: 5px;
 }
 
 .buttons-container {
@@ -44,11 +50,35 @@
 
 .clear-button,
 .delete-button {
-  width: 50px;
+  width: 77.5px;
+  border-radius: 5px;
+}
+
+.clear-button {
+  background-color: rgb(141, 44, 44);
+  color: white;
+}
+
+.delete-button,
+#minus-button {
+  background-color: darkgray;
+  border-radius: 5px;
+}
+
+.num-button {
+  background-color: grey;
+  color: white;
+  border-radius: 5px;
+}
+
+.op-button,
+.equals-button {
+  background-color: rgb(173, 157, 157);
+  border-radius: 5px;
 }
 
 button {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   margin: 2px;
 }
