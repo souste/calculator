@@ -72,7 +72,7 @@ minusButton.addEventListener("click", () => {
 // Click Event Listener Functions
 
 function numberDisplay(event) {
-  if (display.innerText.length > 10) {
+  if (display.innerText.length > 9) {
     document.getElementByClassName("num-button").disabled = true;
   }
   if (event.target.value === ".")
